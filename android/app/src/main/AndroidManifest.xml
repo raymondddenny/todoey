@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.todo_sqlite">
+    package="co.dencodes.todoey">
    <application
         android:label="todo_sqlite"
         android:icon="@mipmap/ic_launcher">

@@ -1,4 +1,4 @@
-package com.example.todo_sqlite
+package co.dencodes.todoey
 
 import io.flutter.embedding.android.FlutterActivity
 
