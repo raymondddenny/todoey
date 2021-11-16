@@ -1,6 +1,6 @@
-# todo_sqlite
+# A-Notes
 
-A new Flutter project.
+Ordinary notes app for fun.
 
 ## Getting Started
 
