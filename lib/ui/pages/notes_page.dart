@@ -1,10 +1,12 @@
+import 'package:rive/rive.dart';
+
+import '../../db/note_database.dart';
+import '../../model/note.dart';
+import '../widgets/note_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:todo_sqlite/db/note_database.dart';
-import 'package:todo_sqlite/model/note.dart';
-import 'package:todo_sqlite/ui/pages/edit_add_note_page.dart';
-import 'package:todo_sqlite/ui/widgets/note_card_widget.dart';
 
+import 'edit_add_note_page.dart';
 import 'notes_detail_page.dart';
 
 class NotesPage extends StatefulWidget {
@@ -53,7 +55,28 @@ class _NotesPageState extends State<NotesPage> {
         child: isLoading
             ? const CircularProgressIndicator()
             : notes.isEmpty
-                ? Text('No notes')
+                ? Column(
+                    children: [
+                      Expanded(
+                        child: Stack(
+                          children: const [
+                            RiveAnimation.asset(
+                              "assets/rive/testosaur.riv",
+                              fit: BoxFit.cover,
+                              placeHolder: CircularProgressIndicator(),
+                            ),
+                            Align(
+                              alignment: Alignment(0, -0.8),
+                              child: Text(
+                                'No notes available .... ',
+                                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
                 : buildNotes(),
       ),
       floatingActionButton: FloatingActionButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_sqlite/ui/pages/notes_page.dart';
+
+import 'ui/pages/notes_page.dart';
 
 void main() {
   runApp(const MyApp());
