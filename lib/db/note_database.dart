@@ -1,6 +1,6 @@
+import '../model/note.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:todo_sqlite/model/note.dart';
 
 class NoteDatabase {
   static final NoteDatabase instance = NoteDatabase._init();

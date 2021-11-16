@@ -1,7 +1,7 @@
+import '../../db/note_database.dart';
+import '../../model/note.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:todo_sqlite/db/note_database.dart';
-import 'package:todo_sqlite/model/note.dart';
 
 import 'edit_add_note_page.dart';
 

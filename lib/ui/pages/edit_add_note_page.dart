@@ -1,6 +1,6 @@
+import '../../db/note_database.dart';
+import '../../model/note.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_sqlite/db/note_database.dart';
-import 'package:todo_sqlite/model/note.dart';
 
 class EditAddNotePage extends StatefulWidget {
   const EditAddNotePage({Key? key, this.note}) : super(key: key);
