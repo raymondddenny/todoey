@@ -10,12 +10,9 @@ class NoteCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Color> colorContainer = [
+      Colors.pink.shade300,
       Colors.blue.shade400,
-      Colors.yellow.shade400,
-      Colors.pink.shade400,
-      Colors.green.shade400,
-      Colors.orange.shade400,
-      Colors.lime.shade400,
+      Colors.purple.shade300,
     ];
     return Container(
       padding: const EdgeInsets.all(8),

@@ -61,7 +61,7 @@ class _EditAddNotePageState extends State<EditAddNotePage> {
               width: double.infinity,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 6,
+                itemCount: 3,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
@@ -77,8 +77,18 @@ class _EditAddNotePageState extends State<EditAddNotePage> {
                 },
               ),
             ),
-            TextField(
+            TextFormField(
               controller: _titleNoteController,
+              validator: (val) {
+                if (val!.isEmpty) {
+                  return "Title cannot be empty";
+                }
+              },
+              onChanged: (val) {
+                if (_titleNoteController.text.isNotEmpty) {
+                  _formKey.currentState!.validate();
+                }
+              },
               decoration: const InputDecoration(
                 hintText: "Title",
                 hintStyle: TextStyle(
@@ -87,12 +97,28 @@ class _EditAddNotePageState extends State<EditAddNotePage> {
                 ),
                 border: InputBorder.none,
               ),
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const Divider(
               color: Colors.blueGrey,
             ),
-            TextField(
+            TextFormField(
               controller: _descriptionNoteController,
+              validator: (val) {
+                if (val!.isEmpty) {
+                  return "Description cannot be empty";
+                }
+              },
+              onChanged: (val) {
+                setState(() {
+                  if (_descriptionNoteController.text.isNotEmpty) {
+                    _formKey.currentState!.validate();
+                  }
+                });
+              },
               maxLines: 5,
               decoration: const InputDecoration(
                 hintText: "Type something ...",
@@ -108,13 +134,15 @@ class _EditAddNotePageState extends State<EditAddNotePage> {
   Widget saveButton() => Padding(
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
-          onPressed: () async {
-            setState(() {
-              noteDescription = _descriptionNoteController.text;
-              noteTitle = _titleNoteController.text;
-            });
-            addOrUpdateNote();
-          },
+          onPressed: _descriptionNoteController.text.isNotEmpty
+              ? () async {
+                  setState(() {
+                    noteDescription = _descriptionNoteController.text;
+                    noteTitle = _titleNoteController.text;
+                  });
+                  addOrUpdateNote();
+                }
+              : null,
           child: const Text("Save"),
           style: ElevatedButton.styleFrom(
             primary: Colors.orange,
@@ -174,12 +202,9 @@ class NoteColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Color> colorContainer = [
-      Colors.blue.shade700,
-      Colors.yellow.shade700,
-      Colors.pink.shade700,
-      Colors.green.shade700,
-      Colors.orange.shade700,
-      Colors.lime.shade700,
+      Colors.pink.shade300,
+      Colors.blue.shade400,
+      Colors.purple.shade300,
     ];
     return Container(
       height: 48,
